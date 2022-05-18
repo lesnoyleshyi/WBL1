@@ -30,7 +30,7 @@ func square(nums <-chan int) <-chan int {
 	squares := make(chan int)
 	go func() {
 		for num := range nums {
-			squares <- numgit * num
+			squares <- num * num
 		}
 		close(squares)
 	}()
