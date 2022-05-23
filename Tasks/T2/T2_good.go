@@ -10,6 +10,9 @@ func main() {
 
 	numbers := gen(src...)
 	squares := square(numbers)
+	//or
+	//squares := square(gen(src...))
+	
 	for val := range squares {
 		fmt.Println(val)
 	}
