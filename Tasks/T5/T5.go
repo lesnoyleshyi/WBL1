@@ -52,5 +52,5 @@ func readFromCh(done <-chan struct{}, ch chan string) {
 func cancelTimeout(done chan struct{}, timeout int) {
 	time.Sleep(time.Second * time.Duration(timeout))
 	log.Println("Timeout exceeded. Program canceled")
-	done <- struct{}{}
+	close(done)
 }
