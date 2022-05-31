@@ -15,3 +15,6 @@ func main() {
 
 //
 
+Данная программа упадёт с ошибкой "fatal error: all goroutines are asleep - deadlock!",
+так как структура sync.WaitGroup должна передаваться по указателю, а не по значению.
+
