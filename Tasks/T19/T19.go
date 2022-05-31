@@ -3,19 +3,22 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
+	"bufio"
 )
 
 func main() {
-	var input string
+	s := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Enter string value:")
-	_, err := fmt.Scan(&input)
-	if err != nil {
-		log.Fatalln(err)
+	if !s.Scan() {
+		log.Fatal("")
 	}
-	runes := []rune(input)
-	for i := len(runes) - 1; i >= 0; i-- {
-		fmt.Printf("%c", runes[i])
+	str := []rune(s.Text())
+
+	for i,j := 0, len(str)-1; i < j; i,j = i+1,j-1 {
+		str[i], str[j] = str[j], str[i]
 	}
-	fmt.Println()
+
+	fmt.Println(string(str))
 }

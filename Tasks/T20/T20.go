@@ -3,32 +3,24 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
 
-func reverse(s string) string {
-	var newStr string
-
-	runes := []rune(s)
-	for i := len(runes) - 1; i >= 0; i-- {
-		newStr += string(runes[i])
-	}
-	return newStr
-}
-
 func main() {
-	reader := bufio.NewReader(os.Stdin)
+	s := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Enter string value:")
-	s, _ := reader.ReadString('\n')
-	s = strings.Trim(s, "\n")
-
-	words := strings.Split(s, " ")
-	for i := 0; i < len(words); i++ {
-		words[i] = reverse(words[i])
+	if !s.Scan() {
+		log.Fatal("")
 	}
 
-	s = strings.Join(words, " ")
-	fmt.Println(s)
+	words := strings.Split(s.Text(), " ")
+	fmt.Println(strings.Join(words, " "))
+	for i,j := 0, len(words)-1; i < j; i,j = i+1,j-1 {
+		words[i], words[j] = words[j], words[i]
+	}
+
+	fmt.Println(strings.Join(words, " "))
 }

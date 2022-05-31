@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	a := big.NewInt(9223372036854775807)
-	b := big.NewInt(9223372036854775805)
+	a := big.NewInt(92233720368547758070)
+	b := big.NewInt(92233720368547758050)
 
 	mul := big.NewInt(0).Mul(a, b)
 	div := big.NewInt(0).Div(a, b)

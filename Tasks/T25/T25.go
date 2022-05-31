@@ -6,15 +6,18 @@ import (
 )
 
 func Sleep(d int64) {
-	start := time.Now().UnixMilli()
-	for time.Now().UnixMilli()-start < d {
-	}
+	start := time.Now()
+	end := start.Add(time.Millisecond*time.Duration(d))
+	for time.Now().UnixNano() < end.UnixNano() { }
 }
 
 func main() {
-	fmt.Println("Start: ", time.Now().Unix())
+	start := time.Now()
+	fmt.Println("Start: ", start)
 
 	Sleep(3000) //Sleep in milliseconds
 
-	fmt.Println("End:   ", time.Now().Unix())
+	end := time.Now()
+	fmt.Println("End:   ", end)
+	fmt.Printf("Time delta is %d millisec\n", end.Sub(start))
 }

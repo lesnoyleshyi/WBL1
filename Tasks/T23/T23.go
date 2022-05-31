@@ -9,13 +9,16 @@ import (
 
 func Remove(elems []string, idx int) []string {
 	return append(elems[:idx], elems[idx+1:]...)
+	//if order is not critical:
+	//elems[idx] = elems[len(elems)-1]
+	//return elems[:len(elems)-1]
 }
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
+	r := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Enter some values, separated by space:")
-	s, _ := reader.ReadString('\n')
+	s, _ := r.ReadString('\n')
 	s = strings.Trim(s, "\n")
 
 	fmt.Println("Enter index of elem to delete:")

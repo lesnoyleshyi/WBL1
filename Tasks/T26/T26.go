@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func Unique(s string) bool {
+func isUnique(s string) bool {
 	set := make(map[rune]struct{})
 
 	rns := []rune(strings.ToLower(s))
@@ -25,7 +25,7 @@ func main() {
 	s2 := "abCdefA"
 	s3 := "aabcd"
 
-	fmt.Printf("'%s' - %t\n", s1, Unique(s1))
-	fmt.Printf("'%s' - %t\n", s2, Unique(s2))
-	fmt.Printf("'%s' - %t\n", s3, Unique(s3))
+	fmt.Printf("'%s' - %t\n", s1, isUnique(s1))
+	fmt.Printf("'%s' - %t\n", s2, isUnique(s2))
+	fmt.Printf("'%s' - %t\n", s3, isUnique(s3))
 }
