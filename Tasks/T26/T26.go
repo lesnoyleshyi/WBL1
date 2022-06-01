@@ -10,14 +10,14 @@ func isUnique(s string) bool {
 
 	rns := []rune(strings.ToLower(s))
 	for _, rn := range rns {
-		set[rn] = struct{}{}
-	}
+		_, ok := set[rn]; if !ok {
+			set[rn] = struct{}{}
+		} else {
+			return false
+		}
 
-	if len(set) == len(rns) {
-		return true
 	}
-
-	return false
+	return true
 }
 
 func main() {
