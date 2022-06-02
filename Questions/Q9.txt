@@ -2,4 +2,16 @@
 
 //
 
-make, var, :=
+slice:
+
+1) s := make([]T, len, cap)
+2) s := []T{val1, val2, val3}
+3) var s []T, но нужно быть осторожным
+4) sPtr := new([]T); s := *sPtr, но нужно быть осторожным
+
+map
+
+1) m := make(map[T1]T2, size)
+2) m := map[T1]T2{key1:val1, key2:val2}
+3) var m map[T1]T2
+4)

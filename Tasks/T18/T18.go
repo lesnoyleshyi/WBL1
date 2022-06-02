@@ -3,17 +3,15 @@ package main
 import (
 	"fmt"
 	"sync"
+	"sync/atomic"
 )
 
 type counter struct {
-	sync.Mutex
-	count int
+	count int64
 }
 
-func (c *counter) add() {
-	c.Lock()
-	c.count++
-	c.Unlock()
+func (c *counter) add(count int64) {
+	atomic.AddInt64(&c.count, count)
 }
 
 func main() {
@@ -24,7 +22,7 @@ func main() {
 	for i := 0; i < 10; i++ {
 		go func() {
 			for j := 0; j < 10; j++ {
-				cnt.add()
+				cnt.add(1)
 			}
 			wg.Done()
 		}()
