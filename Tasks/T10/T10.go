@@ -4,9 +4,18 @@ import "fmt"
 
 func main() {
 	tempRec := []float64{-25.4, -27.0, 13.0, 19.0, 15.5, 24.5, -21.0, 32.5}
-
 	//map of slices with float values. key is the ceil temp of group
 	groups := make(map[int][]float64)
+
+	//prettier, but slower
+	for lTemp := -70.0; lTemp < 90.0; lTemp += 10.0 {
+		for _, temp := range tempRec {
+			if temp > lTemp && temp <= lTemp+10 {
+				groups[int(lTemp)] = append(groups[int(lTemp+10.0)], temp)
+			}
+		}
+	}
+
 	//If we define number of groups before "sorting", we could sort values by O(n)
 	//It's possible with temperature values, because we know approx hi and lo temperature values.
 	for _, temp := range tempRec {
